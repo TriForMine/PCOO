@@ -1,3 +1,5 @@
+package TP1;
+
 public class Duree {
     protected int total;
     int jours;
@@ -11,9 +13,9 @@ public class Duree {
         secs = Math.abs(secs);
 
         this.jours = secs / 86400;
-        secs = secs % 86400;
+        secs %= 86400;
         this.heures = secs / 3600;
-        secs = secs % 3600;
+        secs %= 3600;
         this.minutes = secs / 60;
         this.secondes = secs % 60;
 

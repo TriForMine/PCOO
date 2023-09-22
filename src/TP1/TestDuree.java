@@ -1,3 +1,5 @@
+package TP1;
+
 public class TestDuree {
     public static void main(String[] args) {
         Duree d1 = new Duree(100000);
@@ -16,5 +18,8 @@ public class TestDuree {
 
         Duree d6 = d1.moins(d2);
         System.out.println("d1 - d2: " + d6);
+
+        Duree d7 = d1.moins(d3);
+        System.out.println("d1 - d3: " + d7);
     }
 }

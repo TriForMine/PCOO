@@ -8,10 +8,10 @@ import Projet1.Utils.DamageType;
 import Projet1.Zones.Zone;
 
 public abstract class Player extends EtreVivant {
-    public int level;
-    public Zone zone;
+    private int level;
+    private Zone zone;
 
-    public Player(String name, int health, int mana, int damage, int level, Zone zone) {
+    protected Player(String name, int health, int mana, int damage, int level, Zone zone) {
         super(name, health, mana, damage);
         this.level = level;
         this.zone = zone;
@@ -19,12 +19,22 @@ public abstract class Player extends EtreVivant {
 
     public abstract String getClassName();
 
+    @Override
     public int getMaxHealth() {
         return this.maxHealth * this.level;
     }
 
+    @Override
     public int getMaxMana() {
         return this.maxMana * this.level;
+    }
+
+    public int getLevel() {
+        return this.level;
+    }
+
+    public Zone getZone() {
+        return this.zone;
     }
 
     protected int getDamage() {
@@ -47,8 +57,10 @@ public abstract class Player extends EtreVivant {
         if (this.zone.canSleep()) {
             this.health = this.getMaxHealth();
             this.mana = this.getMaxMana();
+            System.out.println("Vous vous êtes reposé, vous êtes maintenant en pleine forme!");
+        } else {
+            System.out.println("Vous ne pouvez pas dormir ici!");
         }
-        System.out.println("Vous vous êtes reposé, vous êtes maintenant en pleine forme!");
     }
 
     public void speak(NPC npc) {
@@ -72,7 +84,7 @@ public abstract class Player extends EtreVivant {
             spell.cast(this, target);
         } else {
             int damage = target.takeDamage(this.getDamage(), DamageType.PHYSICAL);
-            System.out.println(this.name + " attaque " + target.name + " et lui inflige " + damage + " points de dégâts.");
+            System.out.println(this.name + " attaque " + target.getName() + " et lui inflige " + damage + " points de dégâts.");
         }
     }
 

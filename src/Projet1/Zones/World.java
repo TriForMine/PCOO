@@ -1,7 +1,7 @@
 package Projet1.Zones;
 
-public class World {
-    private static final Zone[] zones = new Zone[] {
+public final class World {
+    private final Zone[] zones = new Zone[] {
             new Padhiver(),
             new RouteNord(),
             new RouteSud(),
@@ -65,7 +65,7 @@ public class World {
         });
     }
 
-    public static boolean allZonesCleared() {
+    public boolean allZonesCleared() {
         for (Zone zone : zones) {
             if (zone.hasMonsters()) {
                 return false;
@@ -74,15 +74,15 @@ public class World {
         return true;
     }
 
-    public static Zone getStartingZone() {
+    public Zone getStartingZone() {
         return zones[0];
     }
 
-    public static Zone[] getZones() {
+    public Zone[] getZones() {
         return zones;
     }
 
-    public static Zone getZone(int index) {
+    public Zone getZone(int index) {
         return zones[index];
     }
 }

@@ -4,15 +4,15 @@ import Projet1.Spells.Spell;
 import Projet1.Utils.DamageType;
 
 public abstract class EtreVivant {
-    public String name;
+    protected String name;
     protected int maxHealth;
     protected int health;
     protected int maxMana;
     protected int mana;
-    public Spell[] spells;
+    protected Spell[] spells;
     protected int damage;
 
-    public EtreVivant(String name, int health, int mana, int damage) {
+    protected EtreVivant(String name, int health, int mana, int damage) {
         this.name = name;
         this.maxHealth = health;
         this.health = health;
@@ -49,7 +49,7 @@ public abstract class EtreVivant {
     public Spell highestAvailableSpell() {
         Spell highestAvailableSpell = null;
         for (Spell spell : this.spells) {
-            if (spell.cost <= this.mana && (highestAvailableSpell == null || highestAvailableSpell.cost < spell.cost)) {
+            if (spell.getCost() <= this.mana && (highestAvailableSpell == null || highestAvailableSpell.getCost() < spell.getCost())) {
                 highestAvailableSpell = spell;
             }
         }

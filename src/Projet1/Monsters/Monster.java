@@ -5,7 +5,7 @@ import Projet1.Spells.Spell;
 import Projet1.Utils.DamageType;
 
 public abstract class Monster extends EtreVivant {
-    public Monster(String name, int maxHealth, int maxMana, int damage) {
+    protected Monster(String name, int maxHealth, int maxMana, int damage) {
         super(name, maxHealth, maxMana, damage);
     }
 
@@ -15,7 +15,7 @@ public abstract class Monster extends EtreVivant {
             spell.cast(this, target);
         } else {
             int damage = target.takeDamage(this.damage, DamageType.PHYSICAL);
-            System.out.println(this.name + " attaque " + target.name + " et lui inflige " + damage + " dégâts.");
+            System.out.println(this.name + " attaque " + target.getName() + " et lui inflige " + damage + " dégâts.");
         }
     }
 

@@ -9,7 +9,7 @@ public abstract class Zone {
     protected Monster[] monsters;
     protected Zone[] linkedZones;
 
-    public Zone(String name, NPC[] npcs, Monster[] monsters, Zone[] linkedZones) {
+    protected Zone(String name, NPC[] npcs, Monster[] monsters, Zone[] linkedZones) {
         this.name = name;
         this.npcs = npcs;
         this.monsters = monsters;

@@ -5,19 +5,27 @@ import Projet1.Common.EtreVivant;
 import Projet1.Utils.DamageType;
 
 public abstract class Spell {
-    public String name;
-    public int damage;
-    public int cost;
+    protected String name;
+    protected int damage;
+    protected int cost;
 
-    public Spell(String name, int damage, int cost) {
+    protected Spell(String name, int damage, int cost) {
         this.name = name;
         this.damage = damage;
         this.cost = cost;
     }
 
-    protected int getDamage(EtreVivant caster, EtreVivant target) {
-        if (caster instanceof Player) {
-            if (((Player) caster).level >= 6) {
+    public String getName() {
+        return this.name;
+    }
+
+    public int getCost() {
+        return this.cost;
+    }
+
+    protected int getDamage(EtreVivant caster) {
+        if (caster instanceof Player player) {
+            if (player.getLevel() >= 6) {
                 return this.damage * 2;
             } else {
                 return this.damage;
@@ -27,7 +35,7 @@ public abstract class Spell {
     }
 
     public void cast(EtreVivant caster, EtreVivant target) {
-        System.out.println(caster.getName() + " lance " + this.name + " sur " + target.getName());
-        target.takeDamage(this.getDamage(caster, target), DamageType.MAGICAL);
+        int damageDealt = target.takeDamage(this.getDamage(caster), DamageType.MAGICAL);
+        System.out.println(caster.getName() + " lance " + this.name + " sur " + target.getName() + " et lui inflige " + damageDealt + " dégâts magiques!");
     }
 }

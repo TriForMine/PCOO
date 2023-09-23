@@ -5,12 +5,12 @@ import Projet1.Utils.DamageType;
 
 public abstract class EtreVivant {
     public String name;
-    public int maxHealth;
-    public int health;
-    public int maxMana;
-    public int mana;
+    protected int maxHealth;
+    protected int health;
+    protected int maxMana;
+    protected int mana;
     public Spell[] spells;
-    public int damage;
+    protected int damage;
 
     public EtreVivant(String name, int health, int mana, int damage) {
         this.name = name;
@@ -22,6 +22,26 @@ public abstract class EtreVivant {
         this.spells = new Spell[0];
     }
 
+    public String getName() {
+        return this.name;
+    }
+
+    public int getHealth() {
+        return this.health;
+    }
+
+    public int getMaxHealth() {
+        return this.maxHealth;
+    }
+
+    public int getMana() {
+        return this.mana;
+    }
+
+    public int getMaxMana() {
+        return this.maxMana;
+    }
+
     public boolean isAlive() {
         return this.health > 0;
     }
@@ -29,7 +49,7 @@ public abstract class EtreVivant {
     public Spell highestAvailableSpell() {
         Spell highestAvailableSpell = null;
         for (Spell spell : this.spells) {
-            if (spell.cost <= this.mana) {
+            if (spell.cost <= this.mana && (highestAvailableSpell == null || highestAvailableSpell.cost < spell.cost)) {
                 highestAvailableSpell = spell;
             }
         }

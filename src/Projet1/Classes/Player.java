@@ -17,6 +17,8 @@ public abstract class Player extends EtreVivant {
         this.zone = zone;
     }
 
+    public abstract String getClassName();
+
     public int getMaxHealth() {
         return this.maxHealth * this.level;
     }
@@ -46,6 +48,7 @@ public abstract class Player extends EtreVivant {
             this.health = this.getMaxHealth();
             this.mana = this.getMaxMana();
         }
+        System.out.println("Vous vous êtes reposé, vous êtes maintenant en pleine forme!");
     }
 
     public void speak(NPC npc) {
@@ -74,5 +77,10 @@ public abstract class Player extends EtreVivant {
 
     public void takeDamage(int damage, DamageType damageType) {
         this.health -= damage;
+    }
+
+    public void levelUp() {
+        this.level++;
+        System.out.println("Vous avez gagné un niveau! Vous êtes maintenant niveau " + this.level + ".");
     }
 }

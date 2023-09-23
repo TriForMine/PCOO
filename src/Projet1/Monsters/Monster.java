@@ -14,11 +14,13 @@ public abstract class Monster extends EtreVivant {
         if (spell != null) {
             spell.cast(this, target);
         } else {
-            target.takeDamage(this.damage, DamageType.PHYSICAL);
+            int damage = target.takeDamage(this.damage, DamageType.PHYSICAL);
+            System.out.println(this.name + " attaque " + target.name + " et lui inflige " + damage + " dégâts.");
         }
     }
 
-    public void takeDamage(int damage, DamageType damageType) {
+    public int takeDamage(int damage, DamageType damageType) {
         this.health -= damage;
+        return damage;
     }
 }

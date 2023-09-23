@@ -58,7 +58,7 @@ public abstract class EtreVivant {
 
     public abstract void attack(EtreVivant target);
 
-    public abstract void takeDamage(int damage, DamageType damageType);
+    public abstract int takeDamage(int damage, DamageType damageType);
 
     public void heal(int amount) {
         this.health += amount;

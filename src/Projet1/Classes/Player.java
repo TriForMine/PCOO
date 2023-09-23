@@ -71,12 +71,14 @@ public abstract class Player extends EtreVivant {
         if (spell != null) {
             spell.cast(this, target);
         } else {
-            target.takeDamage(this.getDamage(), DamageType.PHYSICAL);
+            int damage = target.takeDamage(this.getDamage(), DamageType.PHYSICAL);
+            System.out.println(this.name + " attaque " + target.name + " et lui inflige " + damage + " points de dégâts.");
         }
     }
 
-    public void takeDamage(int damage, DamageType damageType) {
+    public int takeDamage(int damage, DamageType damageType) {
         this.health -= damage;
+        return damage;
     }
 
     public void levelUp() {

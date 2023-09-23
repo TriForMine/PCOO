@@ -14,7 +14,9 @@ public class Warrior extends Player {
     }
 
     @Override
-    public void takeDamage(int damage, DamageType damageType) {
-        super.takeDamage(damageType == DamageType.PHYSICAL ? damage - 2 : damage, damageType);
+    public int takeDamage(int damage, DamageType damageType) {
+        int damageDealt = damageType == DamageType.PHYSICAL ? damage - 2 : damage;
+        super.takeDamage(damageDealt, damageType);
+        return damageDealt;
     }
 }

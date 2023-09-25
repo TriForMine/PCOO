@@ -70,7 +70,7 @@ public class Game {
         return choice;
     }
 
-    private void pressEnterToContinue() {
+    public static void pressEnterToContinue() {
         System.out.println("\nAppuyez sur Entrée pour continuer...");
         scanner.nextLine();
     }

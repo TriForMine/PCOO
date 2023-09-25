@@ -1,9 +1,9 @@
 package Projet1.NPCs;
 
-import Projet1.Common.EtreVivant;
+import Projet1.Common.Character;
 import Projet1.Utils.DamageType;
 
-public abstract class NPC extends EtreVivant {
+public abstract class NPC extends Character {
     protected String phrase;
 
     protected NPC(String name, String phrase) {
@@ -12,12 +12,12 @@ public abstract class NPC extends EtreVivant {
     }
 
     public void talk() {
-        System.out.println(this.name + ":");
-        System.out.println(this.phrase);
+        System.out.println(name + ":");
+        System.out.println(phrase);
     }
 
     @Override
-    public void attack(EtreVivant target) {
+    public void attack(Character target) {
         throw new UnsupportedOperationException();
     }
 

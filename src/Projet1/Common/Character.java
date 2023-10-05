@@ -147,8 +147,8 @@ public abstract class Character {
         if (spell != null) {
             spell.cast(this, target);
         } else {
-            int damage = target.takeDamage(getDamage(), DamageType.PHYSICAL);
-            System.out.println(name + " attaque " + target.getName() + " et lui inflige " + damage + " dégâts.");
+            int takenDamage = target.takeDamage(getDamage(), DamageType.PHYSICAL);
+            System.out.println(name + " attaque " + target.getName() + " et lui inflige " + takenDamage + " dégâts.");
         }
     }
 
@@ -158,7 +158,7 @@ public abstract class Character {
      * Calculates and applies the damage to the character based on the specified damage and damage type.
      * Returns the amount of damage that was inflicted.
      *
-     * @param damage the amount of damage to be inflicted
+     * @param damage     the amount of damage to be inflicted
      * @param damageType the type of damage to be inflicted
      * @return the amount of damage that was inflicted
      */

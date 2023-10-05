@@ -1,8 +1,8 @@
 package Projet1;
 
+import Projet1.Classes.Barbarian;
 import Projet1.Classes.Mage;
 import Projet1.Classes.Player;
-import Projet1.Classes.Barbarian;
 import Projet1.Classes.Warrior;
 import Projet1.Monsters.Monster;
 import Projet1.NPCs.NPC;
@@ -12,15 +12,49 @@ import Projet1.Zones.Zone;
 import java.util.Scanner;
 
 public class Game {
-    private Player player;
     private static final Scanner scanner = new Scanner(System.in);
+    private static boolean firstTime = true;
     private final World world = new World();
+    private Player player;
 
     public Game() {
         createPlayer();
     }
 
+    public static boolean askForReplay() {
+        if (firstTime) {
+            firstTime = false;
+            return true;
+        }
+
+        System.out.println("Voulez-vous rejouer? (O/N)");
+        String reply = scanner.nextLine();
+
+        return reply.equalsIgnoreCase("o");
+    }
+
+    public static void pressEnterToContinue() {
+        System.out.println("\nAppuyez sur Entrée pour continuer...");
+        scanner.nextLine();
+    }
+
+    public static void clearConsole() {
+        try {
+            final String os = System.getProperty("os.name");
+
+            if (os.contains("Windows")) {
+                Runtime.getRuntime().exec(new String[]{"cmd", "/c", "cls"});
+            } else {
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
+            }
+        } catch (final Exception ignored) {
+        }
+    }
+
     private boolean checkIfGameEnded() {
+        clearConsole();
+
         if (!player.isAlive()) {
             System.out.println("Vous êtes mort!");
             System.out.println("Vous avez perdu!");
@@ -37,6 +71,8 @@ public class Game {
     }
 
     private void createPlayer() {
+        clearConsole();
+
         System.out.println("Choisissez votre nom: ");
         String name = scanner.nextLine();
         System.out.println();
@@ -51,6 +87,8 @@ public class Game {
     }
 
     private void introduction() {
+        clearConsole();
+
         System.out.println("Bienvenue dans Les Nuits de Padhiver!");
         System.out.println("Vous êtes " + player.getName() + " un " + player.getClassName() + " qui doit sauver le monde!");
         System.out.println("Vous devez vaincre tous les monstres pour gagner!");
@@ -70,12 +108,9 @@ public class Game {
         return choice;
     }
 
-    public static void pressEnterToContinue() {
-        System.out.println("\nAppuyez sur Entrée pour continuer...");
-        scanner.nextLine();
-    }
-
     private void chooseClass(String name) {
+        clearConsole();
+
         System.out.println("Choisissez votre classe: ");
         System.out.println("1. Guerrier");
         System.out.println("2. Mage");
@@ -101,6 +136,8 @@ public class Game {
 
     private void start() {
         while (!checkIfGameEnded()) {
+            clearConsole();
+
             System.out.println("Vous êtes dans la zone " + player.getZone().getName() + "!");
             System.out.println("Vous avez " + player.getHealth() + " / " + player.getMaxHealth() + " PV et " + player.getMana() + " / " + player.getMaxMana() + " PM.");
             System.out.println("Que voulez-vous faire?");
@@ -133,6 +170,8 @@ public class Game {
     }
 
     private void speakToNPC() {
+        clearConsole();
+
         if (!player.getZone().hasNPCs()) {
             System.out.println("Il n'y a pas de PNJ ici!");
             return;
@@ -159,6 +198,8 @@ public class Game {
     }
 
     private void fightMonster() {
+        clearConsole();
+
         if (!player.getZone().hasMonsters()) {
             System.out.println("Il n'y a pas de monstre ici!");
             return;
@@ -173,6 +214,7 @@ public class Game {
 
         int choice = getChoice();
 
+        clearConsole();
         if (choice > 0 && choice <= player.getZone().getMonsterCount()) {
             System.out.println("Vous combattez un(e) " + player.getZone().getMonsters()[choice - 1].getName() + "!");
             System.out.println();
@@ -199,6 +241,8 @@ public class Game {
     }
 
     private void move() {
+        clearConsole();
+
         if (!player.getZone().hasLinkedZones()) {
             System.out.println("Il n'y a pas de portail ici!");
             return;
@@ -213,6 +257,7 @@ public class Game {
 
         int choice = getChoice();
 
+        clearConsole();
         if (choice > 0 && choice <= player.getZone().getLinkedZoneCount()) {
             player.move(player.getZone().getLinkedZones()[choice - 1]);
         } else if (choice == player.getZone().getLinkedZoneCount() + 1) {

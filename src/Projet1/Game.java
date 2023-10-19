@@ -186,6 +186,8 @@ public class Game {
 
         int choice = getChoice();
 
+        clearConsole();
+
         if (choice > 0 && choice <= player.getZone().getNPCCount()) {
             player.speak(player.getZone().getNPCs()[choice - 1]);
 

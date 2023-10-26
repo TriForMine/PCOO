@@ -16,6 +16,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="jline" level="project" />
   </component>
   <component name="SonarLintModuleSettings">
     <option name="uniqueId" value="d9df123e-6131-46d1-b8b7-73122e682516" />

@@ -1,5 +1,14 @@
 package TP5;
 
+import TP5.Expressions.Constante;
+import TP5.Expressions.Expression;
+import TP5.Expressions.Variable;
+import TP5.OperationBinaire.Addition;
+import TP5.OperationBinaire.Division;
+import TP5.OperationBinaire.Modulo;
+import TP5.OperationBinaire.Multiplication;
+import TP5.OperationUnaire.Negation;
+
 public class Main {
     public static void main(String[] args) {
         Variable variable1 = new Variable("v1", 42.0);

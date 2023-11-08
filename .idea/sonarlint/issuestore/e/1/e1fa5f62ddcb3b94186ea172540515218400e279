@@ -1,15 +1,0 @@
-
-G
-java:S2387
-"*"x" is the name of a field in "Component".(›Ù´¿8½Ö×´1
-F
-java:S2387"*"y" is the name of a field in "Component".(ÇçÁ8¾Ö×´1
-@
-java:S3010"#Remove this assignment of "rayons".(Ûî±©8ÁÖ×´1
-;
-java:S3010"Remove this assignment of "x".(‘ãó›8ÁÖ×´1
-@
-java:S3010"Remove this assignment of "y".(Ÿ¤ÉÓıÿÿÿÿ8ÁÖ×´1
-@
-java:S3010"#Remove this assignment of "colors".(îìÃ—8ÂÖ×´1
-]	java:S125"<This block of commented-out lines of code should be removed.(¶‘Éıÿÿÿÿ8ÅÖ×´1
